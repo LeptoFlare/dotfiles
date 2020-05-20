@@ -1,0 +1,8 @@
+doc-warnings: true
+pep8:
+    full: true
+    options:
+        max-line-length: 120
+pylint:
+  disable:
+    - unresolved-import
