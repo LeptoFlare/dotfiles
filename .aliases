@@ -9,7 +9,10 @@ alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
 # Shortcuts
-alias code="code-insiders"
+alias vsc="code-insiders"
+alias dcp="docker-compose"
+alias clr="clear"
+
 alias g="git"
 
 # Detect which `ls` flavor is in use
