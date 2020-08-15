@@ -11,7 +11,9 @@ function doIt() {
 		--exclude "LICENSE" \
 		-avh --no-perms . ~;
 	source ~/.bash_profile;
-  curl -fsSL https://starship.rs/install.sh | bash;
+	if ! [ -x "$(command -v starship)" ]; then
+  		curl -fsSL https://starship.rs/install.sh | bash;
+	fi
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
