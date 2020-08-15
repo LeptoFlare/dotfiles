@@ -87,6 +87,10 @@
 	# Detect whitespace errors when applying a patch
 	whitespace = fix
 
+[credential]
+
+	helper = store
+
 [core]
 
 	# Use custom `.gitignore` and `.gitattributes`
