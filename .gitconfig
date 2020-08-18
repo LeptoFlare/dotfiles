@@ -171,15 +171,11 @@
 [url "https://github.com/"]
     insteadOf = github:
     insteadOf = gh:
-
-[url "git@github.com:"]
     pushInsteadOf = github:
     pushInsteadOf = gh:
 
 [url "https://gist.github.com/"]
 	insteadOf = gist:
 	insteadOf = gst:
-
-[url "git@gist.github.com:"]
 	pushInsteadOf = gist:
 	pushInsteadOf = gst:
