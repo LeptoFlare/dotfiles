@@ -12,8 +12,12 @@ function doIt() {
 		-avh --no-perms . ~;
 	source ~/.bash_profile;
 	if ! [ -x "$(command -v starship)" ]; then
-  		curl -fsSL https://starship.rs/install.sh | bash;
+  	curl -fsSL https://starship.rs/install.sh | bash;
 	fi
+  if ! [ -x "$(command -v nvm)" ]; then
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash;
+    nvm install node;
+  fi
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
