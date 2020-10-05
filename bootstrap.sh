@@ -20,6 +20,13 @@ function doIt() {
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash;
         nvm install node;
     fi
+    # Install GH CLI client
+    if ! [ -x "$(command -v gh)" ]; then
+        sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0;
+        sudo apt-add-repository https://cli.github.com/packages;
+        sudo apt update;
+        sudo apt install gh;
+    fi
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
