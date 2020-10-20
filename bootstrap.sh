@@ -18,7 +18,7 @@ function doIt() {
     # Install NVM & Latest Node
     if ! [ -x "$(command -v nvm)" ]; then
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash;
-        nvm install node;
+        nvm use;
     fi
     # Install GH CLI client
     if ! [ -x "$(command -v gh)" ]; then
@@ -26,6 +26,10 @@ function doIt() {
         sudo apt-add-repository https://cli.github.com/packages;
         sudo apt update;
         sudo apt install gh;
+    fi
+    # Install Rust
+    if ! [ -x "$(command -v cargo)" ]; then
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh;
     fi
 }
 
