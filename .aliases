@@ -12,6 +12,7 @@ alias -- -="cd -"
 alias dcp="docker-compose"
 alias clr="clear"
 
+alias py="pys"
 alias g="git"
 
 # Detect which `ls` flavor is in use
