@@ -2,42 +2,47 @@
 
 git pull origin master;
 
-function doIt() {
+function bootstrap() {
   rsync --exclude ".git/" \
     --exclude "bootstrap.sh" \
     --exclude "README.md" \
     --exclude "LICENSE" \
     -avh --no-perms . ~;
   source ~/.bash_profile;
+  install;
+}
+
+function install() {
   # Install Starship
-  if ! [ -x "$(command -v starship)" ]; then
+  if ! [ "$(command -v starship)" ]; then
         curl -fsSL https://starship.rs/install.sh | bash;
   fi
   # Install NVM & Latest Node
-  if ! [ -x "$(command -v nvm)" ]; then
+  if ! [ "$(command -v nvm)" ]; then
       curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash;
       nvm use;
   fi
   # Install GH CLI client
-  if ! [ -x "$(command -v gh)" ]; then
+  if ! [ "$(command -v gh)" ]; then
       sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0;
       sudo apt-add-repository https://cli.github.com/packages;
       sudo apt update;
       sudo apt install gh;
   fi
   # Install Rust
-  if ! [ -x "$(command -v cargo)" ]; then
+  if ! [ "$(command -v rustup)" ]; then
       curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh;
   fi
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
-  doIt;
+  bootstrap;
 else
   read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
   echo "";
   if [[ $REPLY =~ ^[Yy]$ ]]; then
-    doIt;
+    bootstrap;
   fi;
 fi;
-unset doIt;
+unset bootstrap;
+unset install;
