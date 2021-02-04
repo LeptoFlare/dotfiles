@@ -1,0 +1,10 @@
+# Open a python docker container
+function pys() {
+  if [ ! "$(docker ps -q -f name=pys)" ]; then # Container either doesn't exists or isn't running
+    if [ "$(docker ps -aq -f status=exited -f name=pys)" ]; then # Container exists but isn't running
+        docker rm pys
+    fi
+    docker run -it -d --name pys python /bin/bash
+  fi
+  docker exec -it pys /bin/bash
+}
