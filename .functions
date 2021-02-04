@@ -75,17 +75,6 @@ function dataurl() {
 	echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')";
 }
 
-# Open a python docker container
-function pys() {
-  if [ ! "$(docker ps -q -f name=pys)" ]; then # Container either doesn't exists or isn't running
-    if [ "$(docker ps -aq -f status=exited -f name=pys)" ]; then # Container exists but isn't running
-        docker rm pys
-    fi
-    docker run -it -d --name pys python /bin/bash
-  fi
-  docker exec -it pys /bin/bash
-}
-
 # Compare original and gzipped file size
 function gz() {
 	local origsize=$(wc -c < "$1");
