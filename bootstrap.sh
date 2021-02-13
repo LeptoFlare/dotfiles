@@ -3,6 +3,15 @@
 git pull origin master;
 
 function bootstrap() {
+  rsync --exclude ".git/" \
+    --exclude "bootstrap.sh" \
+    --exclude "README.md" \
+    --exclude "LICENSE" \
+    -avh --no-perms . ~;
+  install;
+}
+
+function install() {
   # Install prompt
   echo "Installing starship..."
   if ! [ "$(command -v starship)" ]; then
