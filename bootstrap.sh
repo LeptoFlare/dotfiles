@@ -42,7 +42,8 @@ function install() {
     curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/ajeetdsouza/zoxide/master/install.sh | sh
   fi
   echo "Installing misc packages..."
-    sudo apt install neofetch cowsay nyancat
+  sudo apt install build-essential cmake neofetch cowsay nyancat
+  source ~/.bashrc
   echo "Installing exa..."
   if ! [ "$(command -v exa)" ]; then
     cargo install exa
